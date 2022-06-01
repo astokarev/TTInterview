@@ -1,7 +1,9 @@
 package com.example.ttinterview;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private String name, lastName;
     private PersonList personList;
     TextView textView;
+    //Button button;
     String joke;
     JSONObject object;
     RequestService requestService;
@@ -35,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         textView = (TextView) findViewById(R.id.textView1);
         jokes = new JokeList();
-        addNewJoke();
+        //addNewJoke();
 
         //singleton.init(this);
         //getData("https://api.chucknorris.io/jokes/random");
@@ -81,6 +84,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         requestService.getInstance(this).addToRequestQueue(jsonObjectRequest);
+    }
+
+    public void onButtonClick(View view) {
+        addNewJoke();
     }
 
    /* @Override
