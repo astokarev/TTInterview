@@ -16,4 +16,12 @@ public class Categories {
     public int getLength(){
         return categories.toArray().length;
     }
+    public String[] categoriesArray() {
+        //ArrayList<String> result = new ArrayList<>();
+        String[] result = new String[categories.toArray().length];
+        for (int i = 0; i < categories.toArray().length; i++) {
+            result[i] = categories.get(i);
+        }
+        return result;
+    }
 }
