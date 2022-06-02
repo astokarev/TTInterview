@@ -65,7 +65,38 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             jokes.add(new Joke(response.getString("value")));
 
-                            for(int i=0; i<jokes.getLength();i++) {
+                            for (int i = 0; i < jokes.getLength(); i++) {
+                                //textView.setText(jokes.titles[i]);
+                                textView.setText(jokes.getJoke(i));
+                            }
+                            //textView.setText("Response: " + response.getString("value"));
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+
+                    }
+                });
+        requestService.getInstance(this).addToRequestQueue(jsonObjectRequest);
+    }
+
+    private void getCategories() {
+        String url = "https://api.chucknorris.io/jokes/categories";
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            jokes.add(new Joke(response.getString("value")));
+
+                            for (int i = 0; i < jokes.getLength(); i++) {
                                 //textView.setText(jokes.titles[i]);
                                 textView.setText(jokes.getJoke(i));
                             }
