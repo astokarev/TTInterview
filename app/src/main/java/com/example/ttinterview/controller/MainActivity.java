@@ -2,14 +2,21 @@ package com.example.ttinterview.controller;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.ttinterview.R;
 import com.example.ttinterview.common.RequestService;
 import com.example.ttinterview.model.Categories;
 import com.example.ttinterview.model.Joke;
@@ -20,14 +27,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends ListActivity{
-    private ArrayAdapter<String> adapterCategories;
-    /*private ArrayAdapter<String> adapterLastname;
-    private String name, lastName;
-    private PersonList personList;
-    //TextView textView;
-    //Button button;
-    String joke;
-    JSONObject object;*/
+
+    TextView textView;
+    Button button;
+    ArrayAdapter adapterCategories;
     RequestService requestService;
     JokeList jokes;
     //String categories[];
@@ -62,37 +65,7 @@ public class MainActivity extends ListActivity{
     }
 
 
-    private void addNewJoke() {
-        String url = "https://api.chucknorris.io/jokes/random";
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            jokes.add(new Joke(response.getString("value")));
-
-                            for (int i = 0; i < jokes.getLength(); i++) {
-                                //textView.setText(jokes.titles[i]);
-                                //textView.setText(jokes.getJoke(i));
-                            }
-                            //textView.setText("Response: " + response.getString("value"));
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
-
-                    }
-                });
-        requestService.getInstance(this).addToRequestQueue(jsonObjectRequest);
-    }
 
     private void getCategories() {
         //categories = new Categories();
@@ -124,23 +97,16 @@ public class MainActivity extends ListActivity{
         requestService.getInstance(this).addToRequestQueue(jsonObjectRequest);
     }
 
-    /*public void onButtonClick(View view) {
-        getCategories();
-        //addNewJoke();
-    }*/
 
-   /* @Override
+
+    @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        if(getListAdapter() == adapterName){
-            name = (String) l.getItemAtPosition(position);
-            setListAdapter(adapterLastname);
-            adapterLastname.notifyDataSetChanged();
-        } else{
-            lastName = (String) l.getItemAtPosition(position);
-            setListAdapter(adapterName);
-            adapterName.notifyDataSetChanged();
-        }
-    }*/
+        String value = categories.getCategory(position);
+       Intent intent = new Intent(this, JokeScreen.class);
+       intent.putExtra("category", value);
+       startActivity(intent);
+        //setContentView(R.layout.activity_main);
+    }
 
 }

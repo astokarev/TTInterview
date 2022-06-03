@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TTInterview">
         <activity
-
             android:name=".controller.MainActivity"
             android:exported="true">
             <intent-filter>
@@ -19,6 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".controller.JokeScreen"
+            android:parentActivityName=".controller.MainActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".controller.MainActivity" />
+        </activity>
+        />
+
     </application>
 
 </manifest>
