@@ -1,5 +1,6 @@
 package com.example.ttinterview.controller;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -22,6 +23,9 @@ public class JokeScreen extends AppCompatActivity {
     RequestService requestService;
     TextView textView;
     String value;
+    private DataBaseHelper mDBHelper;
+    private SQLiteDatabase mDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
