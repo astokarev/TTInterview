@@ -3,6 +3,7 @@ package com.example.ttinterview.controller;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,9 +43,8 @@ public class MainActivity extends ListActivity{
     //String categories[];
     Categories categories;
     Context context;
-    private DataBaseHelper mDBHelper;
-    private SQLiteDatabase mDb;
-    
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,19 +57,9 @@ public class MainActivity extends ListActivity{
         //addNewJoke();
 
         adapterCategories = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories.categoriesArray());
-        mDBHelper = new DataBaseHelper(this);
 
-        try{
-            mDBHelper.updateDataBase();
-        }catch (IOException e){
-            throw new Error("Unable to upload database");
-        }
 
-        try {
-            mDb = mDBHelper.getWritableDatabase();
-        }catch (SQLException e){
-            throw e;
-        }
+
         //adapterCategories = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories.categoriesArray());
         //setListAdapter(adapterCategories);
         //singleton.init(this);
@@ -83,7 +74,6 @@ public class MainActivity extends ListActivity{
         adapterLastname = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, personList.lastNameList());*/
         //setListAdapter(adapterName);
     }
-
 
 
 
