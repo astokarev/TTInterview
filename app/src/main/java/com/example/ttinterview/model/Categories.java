@@ -24,4 +24,8 @@ public class Categories {
         }
         return result;
     }
+    public String[] offlineCategories(){
+        String[] result = new String[]{"animal","career","celebrity","dev","explicit","fashion","food","history","money","movie","music","political","religion","science","sport","travel"};
+        return result;
+    }
 }

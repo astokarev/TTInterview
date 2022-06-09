@@ -50,29 +50,10 @@ public class MainActivity extends ListActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
-        //setContentView(R.layout.activity_main);
         categories = new Categories();
-
         getCategories(); //async process!
-        //addNewJoke();
-
-        adapterCategories = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories.categoriesArray());
-
-
-
         //adapterCategories = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories.categoriesArray());
-        //setListAdapter(adapterCategories);
-        //singleton.init(this);
-        //getData("https://api.chucknorris.io/jokes/random");
 
-/*        try {
-            personList = new PersonList();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        adapterName = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item, personList.nameList());
-        adapterLastname = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, personList.lastNameList());*/
-        //setListAdapter(adapterName);
     }
 
 
@@ -89,7 +70,6 @@ public class MainActivity extends ListActivity{
                             for(int i=0; i<response.length(); i++) {
                                 categories.add(response.getString(i));
                             }
-                            //Response.Listener<JSONArray> temp = this;
                             adapterCategories = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, categories.categoriesArray());
                             setListAdapter(adapterCategories);
                         } catch (JSONException e) {
@@ -101,7 +81,8 @@ public class MainActivity extends ListActivity{
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         //textView.setText("ERROR! "+ error.toString());
-
+                        adapterCategories = new ArrayAdapter(context, android.R.layout.simple_list_item_1, categories.offlineCategories());
+                        setListAdapter(adapterCategories);
                     }
                 });
         requestService.getInstance(this).addToRequestQueue(jsonObjectRequest);
@@ -112,8 +93,9 @@ public class MainActivity extends ListActivity{
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        String value = categories.getCategory(position);
-       Intent intent = new Intent(this, JokeScreen.class);
+        //String value = categories.getCategory(position);
+       String value = l.getItemAtPosition(position).toString();
+        Intent intent = new Intent(this, JokeScreen.class);
        intent.putExtra("category", value);
        startActivity(intent);
         //setContentView(R.layout.activity_main);

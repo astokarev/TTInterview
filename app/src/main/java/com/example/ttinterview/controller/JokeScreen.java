@@ -94,8 +94,7 @@ public class JokeScreen extends AppCompatActivity {
         userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE + " where " +
                 DatabaseHelper.COLUMN_ID + "=?", new String[]{String.valueOf(4)});
         userCursor.moveToFirst();
-        String temp = userCursor.getString(1);
-        textView.setText(temp);
+        textView.setText(userCursor.getString(1));
         userCursor.close();
     }
 }
