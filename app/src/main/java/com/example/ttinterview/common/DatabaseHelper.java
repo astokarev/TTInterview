@@ -1,4 +1,4 @@
-package com.example.ttinterview.controller;
+package com.example.ttinterview.common;
 
 import android.content.Context;
 import android.database.SQLException;
@@ -13,19 +13,17 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+    private final Context mContext;
     private static String DB_NAME = "Categories.db";
     private static String DB_PATH = "";
     private static final int SCHEMA = 1;
-    static final String TABLE = "Jokes";
+    public static final String JOKE_TABLE = "Jokes";
     static final String COLUMN_ID = "id";
-    static final String COLUMN_JOKE = "joke";
-
-    private SQLiteDatabase mDataBase;
-    private final Context mContext;
-    private boolean mNeedUpdate = false;
+    public static final String COLUMN_JOKE = "joke";
 
 
-    DatabaseHelper(Context context) {
+
+    public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, SCHEMA);
         this.mContext = context;
         DB_PATH = context.getFilesDir().getPath()+"/" + DB_NAME;
@@ -39,7 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
-    void create_db() {
+    public void create_db() {
 
         File file = new File(DB_PATH);
         if (!file.exists()) {

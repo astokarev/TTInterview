@@ -4,18 +4,23 @@ import java.util.ArrayList;
 
 public class Categories {
     private ArrayList<String> categories;
-    public Categories(){
+
+    public Categories() {
         categories = new ArrayList<>();
     }
-    public void add(String value){
+
+    public void add(String value) {
         categories.add(value);
     }
-    public String getCategory(int i){
-       return categories.get(i);
+
+    public String getCategory(int i) {
+        return categories.get(i);
     }
-    public int getLength(){
+
+    public int getLength() {
         return categories.toArray().length;
     }
+
     public String[] categoriesArray() {
         //ArrayList<String> result = new ArrayList<>();
         String[] result = new String[categories.toArray().length];
@@ -24,8 +29,12 @@ public class Categories {
         }
         return result;
     }
-    public String[] offlineCategories(){
-        String[] result = new String[]{"animal","career","celebrity","dev","explicit","fashion","food","history","money","movie","music","political","religion","science","sport","travel"};
+
+    public String[] offlineCategories() {
+        String[] result = new String[]{"///OFFLINE///animal", "///OFFLINE///career", "///OFFLINE///celebrity", "///OFFLINE///dev",
+                "///OFFLINE///explicit", "///OFFLINE///fashion", "///OFFLINE///food", "///OFFLINE///history", "///OFFLINE///money",
+                "///OFFLINE///movie", "///OFFLINE///music", "///OFFLINE///political", "///OFFLINE///religion", "///OFFLINE///science",
+                "///OFFLINE///sport", "///OFFLINE///travel"};
         return result;
     }
 }
