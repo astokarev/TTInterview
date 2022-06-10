@@ -38,7 +38,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void create_db() {
-
         File file = new File(DB_PATH);
         if (!file.exists()) {
             //получаем локальную бд как поток

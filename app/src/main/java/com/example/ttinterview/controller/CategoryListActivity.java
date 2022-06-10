@@ -61,6 +61,7 @@ public class CategoryListActivity extends ListActivity {
                     }
                 });
         requestService.getInstance(this).addToRequestQueue(jsonObjectRequest);
+
     }
 
 

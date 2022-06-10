@@ -22,7 +22,7 @@ public class Categories {
     }
 
     public String[] categoriesArray() {
-        //ArrayList<String> result = new ArrayList<>();
+
         String[] result = new String[categories.toArray().length];
         for (int i = 0; i < categories.toArray().length; i++) {
             result[i] = categories.get(i);
@@ -31,10 +31,10 @@ public class Categories {
     }
 
     public String[] offlineCategories() {
-        String[] result = new String[]{"///OFFLINE///animal", "///OFFLINE///career", "///OFFLINE///celebrity", "///OFFLINE///dev",
-                "///OFFLINE///explicit", "///OFFLINE///fashion", "///OFFLINE///food", "///OFFLINE///history", "///OFFLINE///money",
-                "///OFFLINE///movie", "///OFFLINE///music", "///OFFLINE///political", "///OFFLINE///religion", "///OFFLINE///science",
-                "///OFFLINE///sport", "///OFFLINE///travel"};
+        String[] result = new String[]{"animal", "career", "celebrity", "dev",
+                "explicit", "fashion", "food", "history", "money",
+                "movie", "music", "political", "religion", "science",
+                "sport", "travel"};
         return result;
     }
 }
